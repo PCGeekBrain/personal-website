@@ -1,2 +1,4 @@
 __pycache__/
 django-env/
+.vscode/*
+*.sqlite3
