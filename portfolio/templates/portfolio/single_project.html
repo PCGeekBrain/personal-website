@@ -1,0 +1,19 @@
+{% extends "portfolio/portfolio_base.html" %}
+
+{% block portfolio_content %}
+  <h1>{{project.title}}</h1>
+  <h3>{% if project.project_type %} {{project.project_type.name}} {% endif %} </h3>
+  <h3>{% if project.client %} {{project.client.name}}{% endif %}</h3>
+  <ul>
+      {% for skill in project.roles.all %}
+        <li>{{skill}}</li>
+      {% endfor %}
+  </ul>
+  <ul>
+      {% for skill in project.skills.all %}
+        <li>{{skill}}</li>
+      {% endfor %}
+  </ul>
+
+  {{project.description}}
+{% endblock portfolio_content %}
