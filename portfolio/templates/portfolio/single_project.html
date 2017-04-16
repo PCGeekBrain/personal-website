@@ -2,6 +2,9 @@
 
 {% block portfolio_content %}
   <h1>{{project.title}}</h1>
+  {% if project.image %}
+      <img src="/media/{{project.image}}"></img>
+  {% endif %}
   <h3>{% if project.project_type %} {{project.project_type.name}} {% endif %} </h3>
   <h3>{% if project.client %} {{project.client.name}}{% endif %}</h3>
   <ul>
@@ -15,5 +18,5 @@
       {% endfor %}
   </ul>
 
-  {{project.description}}
+  {{project.description | safe}}
 {% endblock portfolio_content %}

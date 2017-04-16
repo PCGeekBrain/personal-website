@@ -26,16 +26,16 @@ SECRET_KEY = 'v0hnvu8y6)06)g(2wa&w=6yyn8gjc*z%z@g=1m_quezj(lkav#'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "http://ec2-13-58-12-192.us-east-2.compute.amazonaws.com:8000/",
-    "*.mypatrick.com"
+    "localhost",
+    "127.0.0.1"
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'material',
-    'material.admin',
+    # 'material',
+    # 'material.admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

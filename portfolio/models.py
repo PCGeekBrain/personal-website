@@ -6,26 +6,32 @@ class Type(models.Model):
     """Database Object Model for storing the types of projects"""
     name = models.CharField(max_length=30, help_text="Name of the type of project")
     slug = models.CharField(max_length=30, help_text="Used in URL", unique=True)
-    description = models.CharField(max_length=200, help_text="For listing",  blank=True)
+    description = models.CharField(max_length=200, help_text="For listing", blank=True)
 
     class Meta:
         ordering = ['name']
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return '/portfolio/type/' + self.slug
 
 
 class Role(models.Model):
     """Database Object Model for storing the roles I've taken"""
     name = models.CharField(max_length=30, help_text="Name of position/role")
     slug = models.CharField(max_length=30, help_text="Used in URL", unique=True)
-    description = models.CharField(max_length=200, help_text="For listing",  blank=True)
+    description = models.CharField(max_length=200, help_text="For listing", blank=True)
 
     class Meta:
         ordering = ['name']
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return '/portfolio/role/' + self.slug
 
 
 class Skill(models.Model):
@@ -40,6 +46,9 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return '/portfolio/skill/' + self.slug
+
 class Client(models.Model):
     """Database Object Model for storing the clients that the projects where done for"""
     name = models.CharField(max_length=100, help_text="Name of client to display")
@@ -52,6 +61,9 @@ class Client(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return '/portfolio/client/' + self.slug
+
 
 class Project(models.Model):
     """Database Object Model for Projects on personal Portfolio"""
@@ -59,7 +71,7 @@ class Project(models.Model):
     # Path name is used in the URLS as some providers make an issue out or whitespace
     path_name = models.CharField(max_length=30, help_text="/projects/<path_name>", db_index=True)
     # an Image to make life nice. need to test
-    # image = models.ImageField(upload_to="static/media/images/portfolio")
+    image = models.ImageField(upload_to="portfolio/projects/", blank=True, null=True)
     # Description
     short_description = models.TextField(max_length=250)
     short_description.help_text = "250 character description of the project for the front page"
@@ -83,3 +95,6 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return '/portfolio/project/' + self.path_name
