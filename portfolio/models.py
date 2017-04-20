@@ -98,3 +98,15 @@ class Project(models.Model):
 
     def get_absolute_url(self):
         return '/portfolio/project/' + self.path_name
+
+
+class GalleryItem(models.Model):
+    project = models.ForeignKey(Project, help_text="Project to show the image on")
+    image = models.ImageField(upload_to="portfolio/images/", help_text="Image to display")
+    alt_text = models.CharField(max_length=35)
+    
+    def __str__(self):
+        return self.alt_text
+
+    def get_absolute_url(self):
+        return '/media/' + self.image

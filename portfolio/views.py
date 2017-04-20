@@ -1,6 +1,7 @@
 """Handle rendering the views for the various parts of the portfolio"""
 from django.shortcuts import render, get_object_or_404
 from .models import Type, Role, Skill, Client, Project
+from datetime import date
 
 # Create your views here.
 def project_types(request, slug):
@@ -32,4 +33,12 @@ def single_project(request, name):
     project = get_object_or_404(Project, path_name=name)
 
     return render(request, 'portfolio/single_project.html', {"project": project})
+
+
+def recent_projects(request):
+    """Return list of recent posts"""
+    today = date.today()
+    projects = Project.objects.filter(completion_date__lte=today).order_by('completion_date')[:10]
+
+    return render(request, 'portfolio/types.html', {"projects": projects})
 

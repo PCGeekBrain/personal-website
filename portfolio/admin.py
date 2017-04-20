@@ -1,10 +1,15 @@
 """Handles the administration of the site"""
 from django.contrib import admin
 from django.db import models
-from .models import Project, Client, Skill, Role, Type
+from .models import Project, Client, Skill, Role, Type, GalleryItem
 # Widgets
 from .widgets.TinyMCE4 import TinyMCE4Widget
 from django.contrib.admin.widgets import FilteredSelectMultiple
+
+class GalleryItemInline(admin.TabularInline):
+    """The inline editor for the Gallery items"""
+    model = GalleryItem
+    extra = 1
 
 # Register your models here.
 class ProjectAdmin(admin.ModelAdmin):
@@ -17,6 +22,9 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ('title', 'path_name', 'url', 'project_type', 'client', 'completion_date', 'public')
     list_filter = ('project_type', 'roles', 'skills', 'client', 'public')
     search_fields = ('title', 'url', 'path_name')
+    inlines = [
+        GalleryItemInline,
+    ]
 
 admin.site.register(Project, ProjectAdmin)
 

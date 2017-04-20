@@ -3,6 +3,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    url(r'^', views.recent_projects),
     url(r'^type/(?P<slug>\w+)', views.project_types),
     url(r'^role/(?P<slug>\w+)', views.project_roles),
     url(r'^skill/(?P<slug>\w+)', views.project_skills),
