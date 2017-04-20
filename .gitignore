@@ -3,4 +3,4 @@ django-env/
 .vscode/*
 *.sqlite3
 mysite/secrets.py
-static/media/
+static/media/*
