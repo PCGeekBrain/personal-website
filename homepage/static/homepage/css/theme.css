@@ -69,8 +69,8 @@ hr.star-primary:after {
 }
 header {
   text-align: center;
-  background: #5CBCD6;
-  color: white;
+  /*background: #5CBCD6;
+  color: white;*/
 }
 header .container {
   padding-top: 100px;
@@ -79,6 +79,10 @@ header .container {
 header img {
   display: block;
   margin: 0 auto 20px;
+}
+header img.brooklyn {
+  display: inline-block;
+  margin: 0;
 }
 header .intro-text .name {
   display: block;
@@ -121,6 +125,20 @@ header .intro-text .skills {
 .navbar-custom .navbar-brand:active,
 .navbar-custom .navbar-brand.active {
   color: white;
+}
+.navbar-brand>img {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  margin-top: -5px;
+}
+@media(max-width:768px){
+  .navbar-brand>img {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    margin-top: -5px;
+  }
 }
 .navbar-custom .navbar-nav {
   letter-spacing: 1px;
@@ -177,6 +195,15 @@ header .intro-text .skills {
   .navbar-custom.affix .navbar-brand {
     font-size: 1.5em;
   }
+  .navbar-custom.affix .navbar-brand>img {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin-top: -5px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
 }
 section {
   padding: 100px 0;
@@ -185,10 +212,10 @@ section h2 {
   margin: 0;
   font-size: 3em;
 }
-section.success {
+/*section.success {
   background: #5CBCD6;
   color: white;
-}
+}*/
 @media (max-width: 767px) {
   section {
     padding: 75px 0;
@@ -196,6 +223,10 @@ section.success {
   section.first {
     padding-top: 75px;
   }
+}
+
+#portfolio p.more-info{
+  text-align: center;
 }
 #portfolio .portfolio-item {
   margin: 0 0 15px;
@@ -295,6 +326,10 @@ section.success {
 form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
 }
+.form-group.col-xs-12{
+  text-align: center;
+}
+
 footer {
   color: white;
 }
@@ -312,13 +347,17 @@ footer .footer-below {
   padding: 25px 0;
   background-color: #233140;
 }
+.footer-below p{
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 9px;
+}
 .btn-outline {
   color: white;
   font-size: 20px;
   border: solid 2px white;
   background: transparent;
   transition: all 0.3s ease-in-out;
-  margin-top: 15px;
 }
 .btn-outline:hover,
 .btn-outline:focus,
@@ -414,13 +453,13 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-social {
   display: inline-block;
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
   border: 2px solid white;
   border-radius: 100%;
   text-align: center;
   font-size: 20px;
-  line-height: 45px;
+  line-height: 30px;
 }
 .btn:focus,
 .btn:active,
@@ -511,4 +550,10 @@ fieldset[disabled] .btn-success.active {
 .no-bullets{
   list-style: none;
   padding: 0px;
+}
+
+.social-list{
+  padding: 0px;
+  display: inline-block;
+  margin: 0px;
 }

@@ -16,6 +16,9 @@
     <!-- Theme CSS -->
     <link href="/static/homepage/css/theme.css" rel="stylesheet">
 
+    <!--css animations-->
+    <link href="/static/homepage/css/animate.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="/static/homepage/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -39,7 +42,10 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">M. H.</a>
+                <a class="navbar-brand" href="#page-top">
+                    <img src="/static/homepage/img/MyProfile.png" alt="">&nbsp
+                    M. H.
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,9 +57,9 @@
                     <li class="page-scroll">
                         <a href="#portfolio">Portfolio</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#about">About</a>
-                    </li>
+                    <!--<li class="page-scroll">
+                        <a href="#blog">Blog</a>
+                    </li>-->
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
                     </li>
@@ -67,12 +73,15 @@
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="/static/homepage/img/MyProfile.png" alt="">
+                <div class="col-lg-12 animated fadeInDown">
+                    <img class="img-responsive animated bounceIn" alt="laptop" src="/static/homepage/img/icons/laptop.svg" onerror="this.src='/static/homepage/img/icons/laptop.png'" height="256" width="256">
                     <div class="intro-text">
-                        <span class="name">Menachem M Hornbacher</span>
-                        <hr class="star-light">
-                        <span class="skills">Software Developer</span>
+                        <span class="name" id="title">Hi,</span>
+                        <p>My name is Menachem M. Hornbacher and I am a Professional Software developer from Brooklyn <img class="brooklyn" alt="brooklyn" src="/static/homepage/img/icons/brooklyn.svg" onerror="this.src='/static/homepage/img/icons/brooklyn.png'" height="25" width="25">!<br>
+                            I enjoy playing strategy games, automation, and playing with fresh new technologies.
+                        </p>
+                        <!--<hr class="star-primary">
+                        <span class="skills">Software Developer</span>-->
                     </div>
                 </div>
             </div>
@@ -81,16 +90,16 @@
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
-        <div class="container">
+        <div class="container animated fadeInLeft">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Recent Projects</h2>
+                    <h2>My Recent Projects</h2>
                     <hr class="star-primary">
                 </div>
             </div>
             <div class="row">
                 {% for project in projects %}
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item animated slideInDown">
                     <a href="#portfolioModal{{project.id}}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -103,39 +112,27 @@
                 {% endfor %}
             </div>
             <div class="row">
-                <a href="/portfolio/">More Projects...</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>About</h2>
-                    <hr class="star-light">
-                    <p>Hi, I am a 19 year old software developer in from New York City. I enjoy using computers to solve mundane tasks with tools and automation. If you have any interesting ideas you want to bounce or projects you think I can help with feel free to shoot me an email with the form below or directly at <a href="mailto:me@mendel.tech">me@mendel.tech.</a></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    
-                </div>
+                <p class="more-info"><a href="/portfolio/">More Projects...</a></p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <div class="container">
+        <div class="container animated fadeInRight">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Contact Me</h2>
+                    <h2>Contact Info</h2>
                     <hr class="star-primary">
                 </div>
+                <div class="col-lg-12 text-center">
+                    <a href="https://twitter.com/MMHornbacher" target="_blank"><i class="fa fa-fw fa-twitter fa-2x"></i></a>
+                    <a href="skype:mendelh1537@gmail.com?chat" target="_blank"><i class="fa fa-fw fa-skype fa-2x"></i></a>
+                    <a href="mailto:hello@mendel.tech" target="_blank"><i class="fa fa-fw fa-envelope fa-2x"></i></a>
+                </div>
             </div>
-            <div class="row">
+            <br>
+            <div class="row animated slideInDown">
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
@@ -183,42 +180,20 @@
 
     <!-- Footer -->
     <footer class="text-center">
-        <div class="footer-above">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col col-md-6">
-                        <h3>Location</h3>
-                        <p>President Street
-                            <br>Brooklyn, NY</p>
-                    </div>
-                    <div class="footer-col col-md-6">
-                        <h3>Around the Web</h3>
-                        <ul class="list-inline">
-                            <li>
-                                <a href="https://github.com/PCGeekBrain" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
-                            </li>
-                            <li>
-                                <a href="http://stackoverflow.com/users/1890717/cybergeek-exe" class="btn-social btn-outline"><i class="fa fa-fw fa-stack-overflow"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/MMHornbacher" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="skype:mendelh1537@gmail.com?chat" class="btn-social btn-outline"><i class="fa fa-fw fa-skype"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://play.google.com/store/apps/developer?id=PCGeekBrain%20Development&hl=en" class="btn-social btn-outline"><i class="fa fa-fw fa-android"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="footer-below">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        &copy;Copyright Mendel.tech 2016 - {% now "Y" %}
+                    <div class="col-lg-6">
+                        <p class="copyright">&copy;Copyright Mendel.tech 2016 - {% now "Y" %}</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>Around the web</p>
+                        <ul class="list-inline social-list">
+                            <li><a href="https://github.com/PCGeekBrain" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a></li>
+                            <li><a href="http://stackoverflow.com/users/1890717/cybergeek-exe" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-stack-overflow"></i></a></li>
+                            <li><a href="https://bitbucket.org/PCGeekBrain/" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-bitbucket"></i></a></li>
+                            <li><a href="https://play.google.com/store/apps/developer?id=PCGeekBrain%20Development&hl=en" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-android"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -275,10 +250,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <!-- Contact Form JavaScript -->
     <script src="/static/homepage/js/jqBootstrapValidation.js"></script>
+    <script>$.ajaxSetup({data: {csrfmiddlewaretoken: '{{ csrf_token }}' },});</script>
     <script src="/static/homepage/js/contact_me.js"></script>
     <!-- Theme JavaScript -->
     <script src="/static/homepage/js/freelancer.min.js"></script>
-
+    <!-- Misc JS stuff -->
+    <script src="/static/homepage/js/homepage.js"></script>
 
 </body>
 </html>

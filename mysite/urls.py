@@ -21,5 +21,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^portfolio/', include('portfolio.urls')),
-    url(r'^$', include('homepage.urls'))
+    url(r'^$', include('homepage.urls')),
+    url(r'^mail/', include('homepage.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  #at the end
