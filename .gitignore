@@ -2,3 +2,4 @@ __pycache__/
 django-env/
 .vscode/*
 *.sqlite3
+mysite/secrets.py

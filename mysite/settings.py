@@ -8,9 +8,13 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
+
+DEAR JERKS,
+the file secrets.py is not being tracked in github so you don't use my box as spam
 """
 
 import os
+import mysite.secrets as secret_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
-    "127.0.0.1"
+    "127.0.0.1",
+    "192.168.1.11"
 ]
 
 
@@ -134,3 +139,13 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'common_static'), )
 # Include media files
 MEDIA_ROOT = BASE_DIR + '/static/media/images/'
 MEDIA_URL = '/media/'
+
+#For email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = secret_settings.email_host
+EMAIL_HOST_USER = secret_settings.email_user
+EMAIL_HOST_PASSWORD = secret_settings.email_password
+EMAIL_PORT = 587
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

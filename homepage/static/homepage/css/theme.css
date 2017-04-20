@@ -557,3 +557,13 @@ fieldset[disabled] .btn-success.active {
   display: inline-block;
   margin: 0px;
 }
+
+.help-block.text-danger ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.help-block.text-danger ul {
+  list-style: none;
+  padding: 0px;
+}
