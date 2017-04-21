@@ -25,4 +25,4 @@ urlpatterns = [
     url(r'^mail/', include('homepage.urls'))
 ]
 # Development
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  #at the end
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  #at the end
