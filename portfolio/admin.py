@@ -17,7 +17,7 @@ class ProjectAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">work</i>'
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE4Widget()},
-        models.ManyToManyField: {'widget': FilteredSelectMultiple("Prayer Sections", False)},
+        models.ManyToManyField: {'widget': FilteredSelectMultiple("Roles/Skills", False)},
     }
     list_display = ('title', 'path_name', 'url', 'project_type', 'client', 'completion_date', 'public')
     list_filter = ('project_type', 'roles', 'skills', 'client', 'public')
