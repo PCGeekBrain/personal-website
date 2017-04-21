@@ -9,7 +9,7 @@ from datetime import date
 def homepage(request):
     if request.path == '/mail/':
         raise Http404
-    projects = Project.objects.filter(completion_date__lte=date.today()).order_by('completion_date')[:3]
+    projects = Project.objects.filter(completion_date__lte=date.today()).order_by('-completion_date')[:3]
     context = {
         "projects": projects
     }

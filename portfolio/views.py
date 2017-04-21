@@ -37,7 +37,7 @@ def single_project(request, name):
 
 def recent_projects(request):
     """Return list of recent posts"""
-    projects = Project.objects.filter(completion_date__lte=date.today()).order_by('completion_date')[:10]
+    projects = Project.objects.filter(completion_date__lte=date.today()).order_by('-completion_date')[:10]
 
     return render(request, 'portfolio/recent.html', {"projects": projects})
 
