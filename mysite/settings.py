@@ -27,12 +27,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v0hnvu8y6)06)g(2wa&w=6yyn8gjc*z%z@g=1m_quezj(lkav#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "192.168.1.11"
+    "192.168.1.11",
+    "www.mendel.tech",
+    "mendel.tech"
 ]
 
 
@@ -88,6 +90,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': 'mySQL.cnf',
+        },
+    }
+    'test': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
