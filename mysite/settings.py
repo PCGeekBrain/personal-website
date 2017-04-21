@@ -146,7 +146,7 @@ STATIC_ROOT = os.path.dirname(BASE_DIR) + '/public/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'common_static'), )
 
 # Include media files
-MEDIA_ROOT = BASE_DIR + '/static/media/images/'
+MEDIA_ROOT = os.path.dirname(BASE_DIR) + '/static/media/images/'
 MEDIA_URL = '/media/'
 
 #For email
