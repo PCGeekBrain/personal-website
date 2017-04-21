@@ -129,7 +129,7 @@
                             </div>
                         </div>
                         {% if project.image %}
-                        <img src="/media/{{project.image}}" class="img-responsive" alt="" width="900" height="650">
+                        <img src="{{project.image.url}}" class="img-responsive" alt="" width="900" height="650">
                         {% else %}
                         <img src="/static/homepage/img/default.jpg" class="img-responsive" alt="" width="900" height="650">
                         {% endif %}
@@ -250,7 +250,7 @@
                         <div class="modal-body">
                             <h2 class="title">{{project.title}}</h2>
                             <hr class="star-primary">
-                            {% if project.image %}<img src="/media/{{project.image}}" class="img-responsive" alt="" width="900" height="650">
+                            {% if project.image %}<img src="{{project.image.url}}" class="img-responsive" alt="" width="900" height="650">
                             {% else %}<img src="/static/homepage/img/default.jpg" class="img-responsive" alt="" width="900" height="650">{% endif %}
                             <p>{{project.short_description | safe}}</p>
                             <ul class="list-inline item-details">
