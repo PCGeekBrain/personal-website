@@ -90,17 +90,17 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     # 'test': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': secret_settings.dbs_name,
-    #     'USER': secret_settings.dbs_user,
-    #     'PASSWORD': secret_settings.dbs_password,
-    #     'HOST': secret_settings.dbs_host,   # Or an IP Address that your DB is hosted on
-    #     'PORT': secret_settings.dbs_port,
-    # },
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': secret_settings.dbs_name,
+        'USER': secret_settings.dbs_user,
+        'PASSWORD': secret_settings.dbs_password,
+        'HOST': secret_settings.dbs_host,   # Or an IP Address that your DB is hosted on
+        'PORT': secret_settings.dbs_port,
+    },
 }
 
 # Password validation
@@ -158,3 +158,9 @@ EMAIL_HOST_PASSWORD = secret_settings.email_password
 EMAIL_PORT = 587
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# Security
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
