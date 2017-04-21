@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^portfolio/', include('portfolio.urls')),
     url(r'^$', include('homepage.urls')),
     url(r'^mail/', include('homepage.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  #at the end
+]
+# Development
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  #at the end
