@@ -1,22 +1,76 @@
 {% extends "portfolio/portfolio_base.html" %}
 
-{% block portfolio_content %}
-  <h1>{{project.title}}</h1>
-  {% if project.image %}
-      <img src="/media/{{project.image}}"></img>
-  {% endif %}
-  <h3>{% if project.project_type %} {{project.project_type.name}} {% endif %} </h3>
-  <h3>{% if project.client %} {{project.client.name}}{% endif %}</h3>
-  <ul>
-      {% for skill in project.roles.all %}
-        <li>{{skill}}</li>
-      {% endfor %}
-  </ul>
-  <ul>
-      {% for skill in project.skills.all %}
-        <li>{{skill}}</li>
-      {% endfor %}
-  </ul>
+{% block title %}{{project.title}}{% endblock %}
 
-  {{project.description | safe}}
+{% block style %}
+{% if project.image %}
+<style>
+.background{
+  background: linear-gradient( rgba(256, 256, 256, 0.7), rgba(256, 256, 256, 0.7) ), url(/media/{{project.image}}) no-repeat center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+header hr.star-primary:after{
+  background: linear-gradient( rgba(256, 256, 256, 0.7), rgba(256, 256, 256, 0.7) ), url(/media/{{project.image}}) no-repeat center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+</style>
+{% endif %}
+{% endblock %}
+
+{% block portfolio_header %}
+{% if project.image %}
+<div class="background">
+{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 animated fadeInDown">
+            <!--{% if project.image %}<img src="/media/{{project.image}}"></img>{% endif %}-->
+            <div class="intro-text">
+                <h1 class="name" id="title"><i class="fa fa-briefcase" aria-hidden="true"></i> {{project.title}}</h1>
+                <hr class="star-primary">
+                <h4>{% if project.project_type %}<a href="{{project.project_type.get_absolute_url}}">{{project.project_type.name}}</a>{% endif %} {% if project.client %}For {{project.client.name}}{% endif %}</h4>
+                <p><b>{% for role in project.roles.all %}<a href="{{role.get_absolute_url}}">{{role}}</a>{% if not forloop.last %} | {% endif %}{% endfor %}</b></p>
+                <p><b>{% for skill in project.skills.all %}<a href="{{skill.get_absolute_url}}">{{skill}}</a>{% if not forloop.last %} | {% endif %}{% endfor %}</b></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% if project.image %}</div>{% endif %}
+{% endblock portfolio_header %}
+{% block portfolio_content %}
+<div class="container animated fadeInLeft">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            {{project.description | safe}}
+        </div>
+    </div>
+{% if project.galleryitem_set.count %}
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2>Gallery</h2>
+            <hr class="star-primary">
+        </div>
+    </div>
+    <div class="row">
+        {% for picture in project.galleryitem_set.all %}
+        <div class="col-sm-4 portfolio-item animated lightSpeedIn">
+            <a href="{{picture.image.url}}" target="_blank" class="portfolio-link" data-toggle="modal">
+                <div class="caption">
+                    <div class="caption-content">
+                        <i class="fa fa-search-plus fa-3x"></i><br><br>{{picture.alt_text}}
+                    </div>
+                </div>
+                <img src="{{picture.image.url}}" class="img-responsive" alt="" width="900" height="650">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+</div>
 {% endblock portfolio_content %}

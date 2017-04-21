@@ -2,13 +2,14 @@ from django.shortcuts import render, HttpResponse
 from django.http import Http404, JsonResponse
 from django.utils.html import strip_tags, escape
 from django.core.mail import send_mail, EmailMessage
-from portfolio.models import *
+from portfolio.models import Project
+from datetime import date
 
 # Create your views here.
 def homepage(request):
     if request.path == '/mail/':
         raise Http404
-    projects = Project.objects.order_by('completion_date')[:3]
+    projects = Project.objects.filter(completion_date__lte=date.today()).order_by('completion_date')[:3]
     context = {
         "projects": projects
     }

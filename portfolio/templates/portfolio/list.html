@@ -1,0 +1,26 @@
+{% extends "portfolio/portfolio_base.html" %}
+
+{% block title %}{{project_type}}{% endblock %}
+
+{% block portfolio_page_details %}
+{{project_type}} Projects
+{% endblock portfolio_page_details %}
+
+{% block portfolio_content %}
+<div class="container animated fadeInLeft">
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-sm-4 portfolio-item animated lightSpeedIn">
+            <a href="/portfolio/project/{{project.path_name}}" class="portfolio-link" data-toggle="modal">
+                <div class="caption">
+                    <div class="caption-content">
+                        <i class="fa fa-paper-plane fa-3x"></i><br><br>{{project.title}}
+                    </div>
+                </div>
+                <img src="/media/{{project.image}}" class="img-responsive" alt="" width="900" height="650">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock portfolio_content %}

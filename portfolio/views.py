@@ -7,25 +7,25 @@ from datetime import date
 def project_types(request, slug):
     """Return a list of all projects with this type"""
     project_type = get_object_or_404(Type, slug=slug)
-    return render(request, 'portfolio/types.html', {"projects" : project_type.project_set.all()})
+    return render(request, 'portfolio/list.html', {"projects" : project_type.project_set.all(), "project_type": project_type.name})
 
 
 def project_roles(request, slug):
     """Return a list of all projects with this role"""
     project_role = get_object_or_404(Role, slug=slug)
-    return render(request, 'portfolio/types.html', {"projects" : project_role.project_set.all()})
+    return render(request, 'portfolio/list.html', {"projects" : project_role.project_set.all(), "project_type": project_role.name})
 
 
 def project_skills(request, slug):
     """Return a list of all projects with this role"""
     project_skill = get_object_or_404(Skill, slug=slug)
-    return render(request, 'portfolio/types.html', {"projects" : project_skill.project_set.all()})
+    return render(request, 'portfolio/list.html', {"projects" : project_skill.project_set.all(), "project_type": project_skill.name})
 
 
 def project_client(request, slug):
     """Return a list of all projects with this role"""
     project_client = get_object_or_404(Client, slug=slug)
-    return render(request, 'portfolio/types.html', {"projects" : project_client.project_set.all()})
+    return render(request, 'portfolio/list.html', {"projects" : project_client.project_set.all(), "project_type": project_client.name})
 
 
 def single_project(request, name):
@@ -37,8 +37,7 @@ def single_project(request, name):
 
 def recent_projects(request):
     """Return list of recent posts"""
-    today = date.today()
-    projects = Project.objects.filter(completion_date__lte=today).order_by('completion_date')[:10]
+    projects = Project.objects.filter(completion_date__lte=date.today()).order_by('completion_date')[:10]
 
-    return render(request, 'portfolio/types.html', {"projects": projects})
+    return render(request, 'portfolio/recent.html', {"projects": projects})
 

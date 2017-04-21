@@ -1,9 +1,0 @@
-{% extends "portfolio/portfolio_base.html" %}
-
-{% block portfolio_content %}
-<ul>
-{% for project in projects %}
-    <li><a href="/portfolio/project/{{project.path_name}}">{{project.title}}</a></li>
-{% endfor %}
-</ul>
-{% endblock portfolio_content %}
