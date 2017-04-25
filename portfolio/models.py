@@ -64,14 +64,20 @@ class Client(models.Model):
     def get_absolute_url(self):
         return '/portfolio/client/' + self.slug
 
+# This function handles uploading the images for the portfolio
+def project_upload_location(instance, filename):
+    return "images/portfolio/projects/{}/{}".format(instance.path_name, filename)
 
 class Project(models.Model):
     """Database Object Model for Projects on personal Portfolio"""
     title = models.CharField(max_length=35, help_text="Title for the project")
     # Path name is used in the URLS as some providers make an issue out or whitespace
-    path_name = models.CharField(max_length=30, help_text="/projects/<path_name>", db_index=True)
+    path_name = models.CharField(max_length=30, help_text="/projects/<path_name>", db_index=True, unique=True)
     # an Image to make life nice. need to test
-    image = models.ImageField(upload_to="portfolio/projects/", blank=True, null=True)
+    image = models.ImageField(upload_to=project_upload_location, blank=True, null=True,
+                              height_field="image_height", width_field="image_width")
+    image_height = models.IntegerField(default=0)
+    image_width = models.IntegerField(default=0)
     # Description
     short_description = models.TextField(max_length=250)
     short_description.help_text = "250 character description of the project for the front page"
@@ -88,7 +94,6 @@ class Project(models.Model):
     client = models.ForeignKey(Client, null=True, blank=True)
     # Is it shown publicly
     public = models.BooleanField(default=True)
-
     # Internal Stats not shown to public
     created_at = models.DateTimeField(auto_now_add=True)
     last_modifed = models.DateTimeField(auto_now=True)
@@ -99,10 +104,14 @@ class Project(models.Model):
     def get_absolute_url(self):
         return '/portfolio/project/' + self.path_name
 
+# This function handles uploading the images for the portfolio
+def gallery_upload_location(instance, filename):
+    return "images/portfolio/gallery/{}/{}".format(instance.project.path_name, filename)
+
 
 class GalleryItem(models.Model):
     project = models.ForeignKey(Project, help_text="Project to show the image on")
-    image = models.ImageField(upload_to="portfolio/images/", help_text="Image to display")
+    image = models.ImageField(upload_to=gallery_upload_location, help_text="Image to display")
     alt_text = models.CharField(max_length=35)
     
     def __str__(self):
