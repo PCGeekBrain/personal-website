@@ -1,7 +1,8 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, render_to_response
 from django.http import Http404, JsonResponse
 from django.utils.html import strip_tags, escape
 from django.core.mail import send_mail, EmailMessage
+from django.template import RequestContext
 from portfolio.models import Project
 from datetime import date
 
@@ -15,7 +16,6 @@ def homepage(request):
     }
 
     return render(request, 'homepage/home.html', context)
-
 
 def send_message(request):
     if request.method == 'POST':
