@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v0hnvu8y6)06)g(2wa&w=6yyn8gjc*z%z@g=1m_quezj(lkav#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -89,18 +89,18 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': secret_settings.dbs_name,
-        'USER': secret_settings.dbs_user,
-        'PASSWORD': secret_settings.dbs_password,
-        'HOST': secret_settings.dbs_host,   # Or an IP Address that your DB is hosted on
-        'PORT': secret_settings.dbs_port,
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': secret_settings.dbs_name,
+    #     'USER': secret_settings.dbs_user,
+    #     'PASSWORD': secret_settings.dbs_password,
+    #     'HOST': secret_settings.dbs_host,   # Or an IP Address that your DB is hosted on
+    #     'PORT': secret_settings.dbs_port,
+    # },
 }
 
 # Password validation
