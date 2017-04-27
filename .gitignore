@@ -6,3 +6,4 @@ django-env/
 mysite/secrets.py
 mysite/mySQL.cnf
 static/media/*
+*/migrations/*
