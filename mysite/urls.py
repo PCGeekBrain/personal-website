@@ -23,8 +23,7 @@ from .error_views import handle_404, handle_500
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^portfolio/', include('portfolio.urls')),
-    url(r'^$', include('homepage.urls')),
-    url(r'^mail/', include('homepage.urls')),
+    url(r'^', include('homepage.urls')),
     url(r'^blog/', include('blog.urls'))
 ]
 # Development

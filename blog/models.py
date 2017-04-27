@@ -6,7 +6,7 @@ def post_upload_location(instance, filename):
 # Create your models here.
 class Post(models.Model):
     """The block of content detailing the post"""
-    title = models.CharField(max_length=150, help_text="Title for post, also used for url")
+    title = models.CharField(max_length=150, help_text="Title for post, also used for url", unique=True)
     content = models.TextField(blank=True, null=True)
     header_image = models.ImageField(upload_to=post_upload_location, blank=True, null=True, height_field="image_height", width_field="image_width")
     image_height = models.IntegerField(default=0)
