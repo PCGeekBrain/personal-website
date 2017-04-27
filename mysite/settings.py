@@ -33,8 +33,9 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "192.168.1.11",
-    "www.mendel.tech",
-    "mendel.tech"
+    "*.mendel.tech",
+    "mendel.tech",
+    "testserver"
 ]
 
 
@@ -43,6 +44,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     # 'material',
     # 'material.admin',
+    # 'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

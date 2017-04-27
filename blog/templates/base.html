@@ -64,27 +64,16 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/">
-                    <img src="/static/homepage/img/MyProfile.png" alt="">&nbsp
-                    M. H.
-                </a>
+                <a class="navbar-brand" href="/"><img src="/static/homepage/img/MyProfile.png" alt="">&nbspM. H.</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="/portfolio/">Portfolio</a>
-                    </li>
-                    <!--<li class="page-scroll">
-                        <a href="#blog">Blog</a>
-                    </li>-->
-                    <li class="page-scroll">
-                        <a href="/#contact">Contact</a>
-                    </li>
+                    <li class="hidden"><a href="#page-top"></a></li>
+                    <li class="page-scroll"><a href="/portfolio/">Portfolio</a></li>
+                    <li class="page-scroll"><a href="/blog/">Blog</a></li>
+                    <li class="page-scroll"><a href="/#contact">Contact</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -93,29 +82,22 @@
     </nav>
 
     <header>
-        {% block portfolio_header %}
+        {% block post_header %}
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 animated fadeInDown">
-                    
                     <div class="intro-text">
-                        <h1 class="name" id="title"><i class="fa fa-briefcase" aria-hidden="true"></i> Portfolio</h1>
+                        <h1 class="name" id="title"></i>Blog</h1>
                         <hr class="star-primary">
-                        <p>
-                        {% block portfolio_page_details %}
-                        Software Developer | Server Guy
-                        {% endblock portfolio_page_details %}
-                        </p>
+                        <p>{% block post_page_details %}{% endblock post_page_details %}</p>
                     </div>
                 </div>
             </div>
         </div>
-        {% endblock portfolio_header %}
+        {% endblock post_header %}
     </header>
 
-    <section id="portfolio_content">
-        {% block portfolio_content %}
-        {% endblock portfolio_content %}
+    <section id="post_content">{% block post_content %}{% endblock post_content %}
     </section>
 
     <!-- Footer -->
@@ -123,9 +105,7 @@
         <div class="footer-below">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <p class="copyright">&copy;Copyright Mendel.tech 2016 - {% now "Y" %}</p>
-                    </div>
+                    <div class="col-lg-6"><p class="copyright">&copy;Copyright Mendel.tech 2016 - {% now "Y" %}</p></div>
                     <div class="col-lg-6">
                         <p>Around the web</p>
                         <ul class="list-inline social-list">
