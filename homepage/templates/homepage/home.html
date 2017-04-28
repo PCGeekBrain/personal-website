@@ -79,9 +79,9 @@
                     <li class="page-scroll">
                         <a href="#portfolio">Portfolio</a>
                     </li>
-                    <!--<li class="page-scroll">
+                    <li class="page-scroll">
                         <a href="#blog">Blog</a>
-                    </li>-->
+                    </li>
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
                     </li>
@@ -99,7 +99,7 @@
                     <img class="img-responsive animated rollIn" alt="laptop" src="/static/homepage/img/icons/laptop.svg" onerror="this.src='/static/homepage/img/icons/laptop.png'" height="256" width="256">
                     <div class="intro-text">
                         <span class="name" id="title">Hi, </span>
-                        <p>Hi, My name is Menachem M. Hornbacher and I am a Professional Software developer from Brooklyn <img class="brooklyn" alt="brooklyn" src="/static/homepage/img/icons/brooklyn.svg" onerror="this.src='/static/homepage/img/icons/brooklyn.png'" height="25" width="25">!<br>
+                        <p>Hi! My name is Menachem M. Hornbacher and I am a Professional Software developer from Brooklyn <img class="brooklyn" alt="brooklyn" src="/static/homepage/img/icons/brooklyn.svg" onerror="this.src='/static/homepage/img/icons/brooklyn.png'" height="25" width="25">!<br>
                             I enjoy playing strategy games, automation, and playing around with interesting tech.
                         </p>
                         <!--<hr class="star-primary">
@@ -144,6 +144,41 @@
         </div>
     </section>
 
+    <!--Blog section-->
+    <section id="blog">
+        <div class="container animated fadeInLeft">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Some thoughts</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                {% for post in posts %}
+                <div class="col-sm-4 blog-item animated lightSpeedIn">
+                    <a href="/blog/post/{{post.path}}" class="blog-link" data-toggle="modal">
+                        <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-file-text-o fa-3x"></i><br><br>{{post.title}}
+                        </div>
+                        </div>
+                        {% if post.header_image %}
+                        <div style='background: url("{{post.header_image.url}}"); background-size:cover;' class="post-image">
+                        {% else %}
+                        <div style='background: url({{stock_image}}); background-size:cover;' class="post-image">
+                        {% endif %}
+                        </div>
+                        <h3 class="post-title">{{post.title}}</h3>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <p class="more-info"><a href="/blog/">More posts...</a></p>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="container animated fadeInUp">
@@ -153,7 +188,6 @@
                     <hr class="star-primary">
                 </div>
                 <div class="col-lg-12 text-center">
-                    <h4>Contact Info:</h4>
                     <a href="https://twitter.com/MMHornbacher" target="_blank"><i class="fa fa-fw fa-twitter fa-2x"></i></a>
                     <a href="skype:mendelh1537@gmail.com?chat" target="_blank"><i class="fa fa-fw fa-skype fa-2x"></i></a>
                     <a href="mailto:hello@mendel.tech" target="_blank"><i class="fa fa-fw fa-envelope fa-2x"></i></a>

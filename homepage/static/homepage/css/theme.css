@@ -225,20 +225,20 @@ section h2 {
   }
 }
 
-#portfolio p.more-info{
+#portfolio p.more-info, #blog p.more-info{
   text-align: center;
 }
-#portfolio .portfolio-item {
+#portfolio .portfolio-item, #blog .blog-item {
   margin: 0 0 15px;
   right: 0;
 }
-#portfolio .portfolio-item .portfolio-link {
+#portfolio .portfolio-item .portfolio-link, #blog .blog-item .blog-link {
   display: block;
   position: relative;
   max-width: 400px;
   margin: 0 auto;
 }
-#portfolio .portfolio-item .portfolio-link .caption {
+#portfolio .portfolio-item .portfolio-link .caption, #blog .blog-item .blog-link .caption{
   background: rgba(24, 188, 156, 0.9);
   background: rgba(24, 156, 188, 0.9);
   position: absolute;
@@ -249,10 +249,10 @@ section h2 {
   -webkit-transition: all ease 0.5s;
   -moz-transition: all ease 0.5s;
 }
-#portfolio .portfolio-item .portfolio-link .caption:hover {
+#portfolio .portfolio-item .portfolio-link .caption:hover, #blog .blog-item .blog-link .caption:hover {
   opacity: 1;
 }
-#portfolio .portfolio-item .portfolio-link .caption .caption-content {
+#portfolio .portfolio-item .portfolio-link .caption .caption-content, #blog .blog-item .blog-link .caption .caption-content {
   position: absolute;
   width: 100%;
   height: 20px;
@@ -262,18 +262,26 @@ section h2 {
   margin-top: -12px;
   color: white;
 }
-#portfolio .portfolio-item .portfolio-link .caption .caption-content i {
+#portfolio .portfolio-item .portfolio-link .caption .caption-content i, #blog .blog-item .blog-link .caption .caption-content i {
   margin-top: -12px;
 }
 #portfolio .portfolio-item .portfolio-link .caption .caption-content h3,
-#portfolio .portfolio-item .portfolio-link .caption .caption-content h4 {
+#portfolio .portfolio-item .portfolio-link .caption .caption-content h4,
+#blog .blog-item .blog-link .caption .caption-content h3,
+#blog .blog-item .blog-link .caption .caption-content h4 {
   margin: 0;
 }
 #portfolio * {
   z-index: 2;
 }
+#blog * {
+  z-index: 2;
+}
 @media (min-width: 767px) {
   #portfolio .portfolio-item {
+    margin: 0 0 30px;
+  }
+  #blog .blog-item {
     margin: 0 0 30px;
   }
 }
@@ -582,4 +590,19 @@ a.portfolio-link {
 
 .fullheight{
   height: 100vh
+}
+
+.post-image{
+  min-height: 260px;
+  min-width: 360px; 
+}
+
+.post-title{
+  color: #000;
+  text-align: center;
+  padding: 0px 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-bottom: 15px;
 }

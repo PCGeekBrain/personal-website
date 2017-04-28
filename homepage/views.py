@@ -4,15 +4,20 @@ from django.utils.html import strip_tags, escape
 from django.core.mail import send_mail, EmailMessage
 from django.template import RequestContext
 from portfolio.models import Project
-from datetime import date
+from blog.models import Post
+from django.utils import timezone
+from blog.misc import random_stock_image
 
 # Create your views here.
 def homepage(request):
     if request.path == '/mail/':
         raise Http404
-    projects = Project.objects.filter(completion_date__lte=date.today()).order_by('-completion_date')[:3]
+    projects = Project.objects.filter(completion_date__lte=timezone.now()).order_by('-completion_date')[:3]
+    posts = Post.objects.filter(publish_date__lte=timezone.now()).order_by('-publish_date').defer('content')[:3]
     context = {
-        "projects": projects
+        "projects": projects,
+        "posts": posts,
+        "stock_image": random_stock_image
     }
 
     return render(request, 'homepage/home.html', context)
