@@ -31,7 +31,7 @@ def send_message(request):
         message = strip_tags(escape(request.POST['message']))
         email_to_address ='me@mendel.tech'
         email_subject = 'Mendel.Tech Contact: Message from {}'.format(name)
-        email_body = 'You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: {}\n\nEmail: {}\n\nPhone: {}\n\nMessage:\n{}'.format(name, email, phone, message)
+        email_body = 'You have received a new message from your website contact form.\n\nHere are the details:\n\nName: {}\n\nEmail: {}\n\nPhone: {}\n\nMessage:\n{}'.format(name, email, phone, message)
 
         final_email = EmailMessage(subject=email_subject, body=email_body, from_email='noreply@mendel.tech', to=[email_to_address], reply_to=[email])
         final_email.send()
