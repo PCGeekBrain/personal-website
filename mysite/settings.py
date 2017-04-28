@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "192.168.1.11",
-    "*.mendel.tech",
+    "www.mendel.tech",
     "mendel.tech",
     "testserver"
 ]
