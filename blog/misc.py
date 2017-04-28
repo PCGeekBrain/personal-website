@@ -3,6 +3,5 @@ from django.conf import settings
 import random
 import os
 
-class random_stock_image:
-    def generate(self):
-        return "/static/stock_img/{}".format(random.choice(settings.RANDOM_IMAGES))
+def random_stock_image():
+    return "/static/stock_img/{}".format(random.choice(settings.RANDOM_IMAGES))

@@ -1,16 +1,27 @@
 {% extends "blog/base.html" %}
 
-{% block title %}Recent{% endblock %}
+{% block title %}{{post.title}}{% endblock %}
+{% block style %}
+{% if post.header_image %}
+<style>.background{background: linear-gradient( rgba(256, 256, 256, 0.7), rgba(256, 256, 256, 0.7) ), url({{post.header_image.url}}) no-repeat center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+header hr.star-primary:after{background: linear-gradient( rgba(256, 256, 256, 0.7), rgba(256, 256, 256, 0.7) ), url({{post.header_image.url}}) no-repeat center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}</style>
+{% else %}
+<style>.background{background: linear-gradient( rgba(256, 256, 256, 0.7), rgba(256, 256, 256, 0.7) ), url({{stock_image}}) no-repeat center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+header hr.star-primary:after{background: linear-gradient( rgba(256, 256, 256, 0.7), rgba(256, 256, 256, 0.7) ), url({{stock_image}}) no-repeat center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}</style>
+{% endif %}
 
+{% endblock %}
 {% block post_page_details %}Recent Blog Posts{% endblock post_page_details %}
 
 {% block post_header %}
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 animated fadeInDown">
-            <div class="intro-text">
-                <h1 class="name" id="title">{{post.title}}</h1>
-                <hr class="star-primary">
+<div class="background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 animated fadeInDown">
+                <div class="intro-text">
+                    <h1 class="name" id="title">{{post.title}}</h1>
+                    <hr class="star-primary">
+                </div>
             </div>
         </div>
     </div>
