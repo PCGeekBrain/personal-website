@@ -24,8 +24,8 @@ class Post(models.Model):
     ], blank=True)
     content = models.TextField(blank=True, null=True)
     header_image = models.ImageField(upload_to=post_upload_location, blank=True, null=True, height_field="image_height", width_field="image_width")
-    image_height = models.IntegerField(default=0, null=True)
-    image_width = models.IntegerField(default=0, null=True)
+    image_height = models.IntegerField(default=0, blank=True, null=True)
+    image_width = models.IntegerField(default=0, blank=True, null=True)
     image_folder = models.CharField(max_length=15, default="unsorted")
     # sorting
     category = models.ManyToManyField(Category, blank=True)
@@ -42,3 +42,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return '/blog/post/' + self.path

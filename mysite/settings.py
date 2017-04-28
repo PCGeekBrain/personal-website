@@ -166,3 +166,5 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # SECURE_SSL_REDIRECT = True
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
+
+RANDOM_IMAGES = os.listdir(os.path.join(BASE_DIR, 'common_static/stock_img'))
