@@ -32,19 +32,17 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "192.168.1.11",
+    "192.168.1.14",
     "www.mendel.tech",
-    "mendel.tech",
-    "testserver"
+    "mendel.tech"
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    # 'material',
-    # 'material.admin',
-    # 'grappelli',
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
