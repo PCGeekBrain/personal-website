@@ -17,11 +17,21 @@ class ProjectAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">work</i>'
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE4Widget()},
-        models.ManyToManyField: {'widget': FilteredSelectMultiple("Roles/Skills", False)},
     }
     list_display = ('title', 'path_name', 'url', 'project_type', 'client', 'completion_date', 'public')
     list_filter = ('project_type', 'roles', 'skills', 'client', 'public')
     search_fields = ('title', 'url', 'path_name')
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'path_name', 'url', 'starting_date', 'completion_date', 'public')
+        }), ('Header Image', {
+            'fields': ('image', 'image_height', 'image_width')
+        }), ('Content', {
+            'fields': ('short_description', 'description')
+        }), ('Sorting', {
+            'fields': ('project_type', 'roles', 'skills', 'client')
+        })
+    )
     inlines = [
         GalleryItemInline,
     ]
