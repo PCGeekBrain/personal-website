@@ -5,6 +5,7 @@ from .models import Project, Client, Skill, Role, Type, GalleryItem
 # Widgets
 from .widgets.TinyMCE4 import TinyMCE4Widget
 from django.contrib.admin.widgets import FilteredSelectMultiple
+from jet.filters import RelatedFieldAjaxListFilter
 
 class GalleryItemInline(admin.TabularInline):
     """The inline editor for the Gallery items"""
@@ -15,9 +16,7 @@ class GalleryItemInline(admin.TabularInline):
 class ProjectAdmin(admin.ModelAdmin):
     """Class to handle administration of Project Items"""
     icon = '<i class="material-icons">work</i>'
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE4Widget()},
-    }
+    formfield_overrides = {models.TextField: {'widget': TinyMCE4Widget()},}
     list_display = ('title', 'path_name', 'url', 'project_type', 'client', 'completion_date', 'public')
     list_filter = ('project_type', 'roles', 'skills', 'client', 'public')
     search_fields = ('title', 'url', 'path_name')
