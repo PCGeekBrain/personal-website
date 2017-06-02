@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^portfolio/', include('portfolio.urls')),
     url(r'^', include('homepage.urls')),
-    url(r'^blog/', include('blog.urls'))
 ]
 # Development
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  #at the end
